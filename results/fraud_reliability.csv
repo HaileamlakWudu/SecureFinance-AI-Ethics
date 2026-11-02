@@ -1,0 +1,2 @@
+Mean Absolute Prediction Change,Prediction Correlation,Decision Change Rate,Perturbation Method
+0.0005431099093086674,0.99997795968582,0.004,Transaction amount increased by 2%; time since last transaction reduced by 2 minutes.

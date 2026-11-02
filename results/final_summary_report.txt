@@ -1,0 +1,148 @@
+SECUREFINANCE AFRICA
+AICS-201 - MEASURE
+AI EVALUATION - FINAL SUMMARY
+======================================================================
+
+A. IDENTITY VERIFICATION
+Overall Accuracy: 0.8700
+False Acceptance Rate: 0.0000
+False Rejection Rate: 0.1513
+
+Identity Fairness by Gender:
+gender  Records  Accuracy  False Acceptance Rate  False Rejection Rate
+Female      525  0.876190                    0.0              0.142544
+  Male      475  0.863158                    0.0              0.161290
+
+Identity Fairness by Region:
+region  Records  Accuracy  False Acceptance Rate  False Rejection Rate
+ Abuja      188  0.861702                    0.0              0.161491
+  Kano      173  0.838150                    0.0              0.194444
+ Lagos      296  0.864865                    0.0              0.152091
+ Other      204  0.897059                    0.0              0.117978
+Rivers      139  0.892086                    0.0              0.132743
+
+Identity Reliability:
+ Mean Absolute Prediction Change  Prediction Correlation  Decision Change Rate                                                Perturbation Method
+                        0.079139                0.999518                 0.148 Image quality reduced by 5 points and network quality by 3 points.
+
+
+B. FRAUD DETECTION
+Accuracy: 0.8920
+Precision: 0.4211
+Recall: 0.1569
+F1-Score: 0.2286
+False Positive Rate: 0.0245
+False Negative Rate: 0.8431
+Average Detection Time (ms): 112.3848
+Median Detection Time (ms): 111.8735
+95th Percentile Detection Time (ms): 147.1409
+
+Fraud Fairness by Gender:
+gender  Transactions  Accuracy  Precision   Recall  F1-Score  False Positive Rate  False Negative Rate
+Female           273  0.919414   0.333333 0.222222  0.266667             0.031373             0.777778
+  Male           227  0.859031   0.571429 0.121212  0.200000             0.015464             0.878788
+
+Fraud Fairness by Region:
+region  Transactions  Accuracy  Precision   Recall  F1-Score  False Positive Rate  False Negative Rate
+ Abuja            97  0.907216       0.00 0.000000  0.000000             0.022222             1.000000
+  Kano            93  0.870968       0.50 0.083333  0.142857             0.012346             0.916667
+ Lagos            99  0.898990       0.25 0.125000  0.166667             0.032967             0.875000
+ Other            97  0.886598       1.00 0.083333  0.153846             0.000000             0.916667
+Rivers           114  0.894737       0.50 0.416667  0.454545             0.049020             0.583333
+
+Fraud Reliability:
+ Mean Absolute Prediction Change  Prediction Correlation  Decision Change Rate                                                                   Perturbation Method
+                        0.000543                0.999978                 0.004 Transaction amount increased by 2%; time since last transaction reduced by 2 minutes.
+
+
+C. CREDIT RISK ASSESSMENT
+
+Gender Fairness:
+gender  Applicants  Approval Rate  Accuracy  False Positive Rate  False Negative Rate  Actual Default Rate
+Female         128       0.679688  0.851562             0.130435             0.194444             0.281250
+  Male         122       0.721311  0.811475             0.164948             0.280000             0.204918
+
+Regional Fairness:
+region  Applicants  Approval Rate  Accuracy  False Positive Rate  False Negative Rate  Actual Default Rate
+ Abuja          62       0.758065  0.870968             0.085106             0.266667             0.241935
+  Kano          57       0.701754  0.824561             0.159091             0.230769             0.228070
+ Lagos          40       0.600000  0.800000             0.192308             0.214286             0.350000
+ Other          33       0.666667  0.818182             0.192308             0.142857             0.212121
+Rivers          58       0.724138  0.827586             0.152174             0.250000             0.206897
+
+Approval Rate Differences:
+ Female_vs_Male_Approval_Difference  Regional_Approval_Rate_Range  Gender_FPR_Difference  Gender_FNR_Difference  Regional_FPR_Difference  Regional_FNR_Difference
+                           0.041624                      0.158065               0.034514               0.085556                 0.107201                  0.12381
+
+Feature Importance:
+             Feature  Importance  Standard Deviation  Contribution Basis  Contribution Percentage
+         loan_amount    0.254275            0.033745            0.254275                73.657850
+              income    0.058265            0.015815            0.058265                16.878005
+          debt_ratio    0.018793            0.007535            0.018793                 5.443977
+credit_history_years    0.012999            0.008404            0.012999                 3.765557
+    employment_years    0.000873            0.002857            0.000873                 0.252936
+                 age    0.000006            0.000270            0.000006                 0.001675
+
+Most Influential Feature: loan_amount
+Least Influential Feature: age
+
+Credit Reliability:
+ Mean Absolute Prediction Change  Prediction Correlation  Decision Change Rate                                                                Perturbation Method
+                        0.013533                0.999528                 0.012 Income decreased by 2%, loan amount increased by 2%, debt ratio increased by 0.01.
+
+
+D. TESTING INFORMATION
+Random Seed: 42
+Identity Dataset Size: 1000
+Fraud Dataset Size: 2000
+Credit Dataset Size: 1000
+Training/Test Split: 75% / 25%
+Identity Method: Simulated matching score and threshold.
+Fraud Model: StandardScaler + Logistic Regression.
+Credit Model: StandardScaler + Logistic Regression.
+Explainability: Permutation Importance using ROC-AUC.
+Identity Positive Class: Legitimate identity = 1.
+Fraud Positive Class: Fraudulent transaction = 1.
+Credit Positive Class: Default = 1.
+Identity threshold: 65/100.
+Fraud threshold: 0.35.
+Credit default threshold: 0.30.
+Reliability: Controlled input perturbations and prediction stability comparisons.
+
+
+E. LIMITATIONS
+1. All datasets and labels are synthetically generated.
+2. Identity verification is a simulated score-based system, not a trained biometric recognition model.
+3. Fraud detection uses a trained model on synthetic transaction data.
+4. Credit assessment uses a trained model on synthetic applicant data.
+5. Detection times are simulated, not measured production response times.
+6. Fairness differences are diagnostic indicators and do not automatically establish discrimination.
+7. Permutation importance does not establish causation.
+8. Controlled perturbation tests do not prove real-world reliability.
+9. Synthetic performance cannot establish production accuracy or legal compliance.
+
+
+F. GENERATED EVIDENCE
+- credit_applicants.csv
+- credit_approval_differences.csv
+- credit_explainability.csv
+- credit_gender_fairness.csv
+- credit_metrics.csv
+- credit_region_fairness.csv
+- credit_reliability.csv
+- credit_risk_results.csv
+- fraud_fairness.csv
+- fraud_metrics.csv
+- fraud_regional_fairness.csv
+- fraud_reliability.csv
+- fraud_transactions.csv
+- identity_fairness.csv
+- identity_metrics.csv
+- identity_regional_fairness.csv
+- identity_reliability.csv
+- identity_verification.csv
+- stage3_4_dashboard.png
+
+======================================================================
+END OF EVALUATION
+======================================================================
